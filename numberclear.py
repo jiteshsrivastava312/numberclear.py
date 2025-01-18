@@ -23,7 +23,7 @@ ALERT_RECIPIENT = "jitesh@avissupport.com"
 TABLES = [
     "broadnew_2_hopper", "default_2_hopper", "newcrmstarttamil_2_hopper",
     "newtelugunew_2_hopper", "startmalaya_2_hopper", "notkannada_2_hopper",
-    "newcrmstartmalya_2_hopper", "newcrmstartkannada_2_hopper",
+    "newcrmstartmalya_2_hopper", "newcrmstartkannad_2_hopper",
     "newcrmstart_2_hopper", "nottelugu_2_hopper", "notmalayalam_2_hopper",
     "nottamil_2_hopper"
 ]
