@@ -34,20 +34,22 @@ STUCK_DURATION = timedelta(minutes=10)
 def send_email_alert(table, stuck_records):
     subject = f"Alert: Stuck Records in {table}"
     body = f"The following records in table '{table}' were stuck for more than 10 minutes and have been deleted:\n\n{stuck_records}"
-    
-    msg = MIMEText(body)
+
+    # Create MIMEText object
+    msg = MIMEText(body, "plain")
     msg["Subject"] = subject
     msg["From"] = EMAIL_USER
-     msg["To"] = ", ".join(ALERT_RECIPIENTS)
+    msg["To"] = ", ".join(ALERT_RECIPIENTS)  # Join email addresses into a single string
 
     try:
         with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
-            server.starttls()
-            server.login(EMAIL_USER, EMAIL_PASS)
-            server.sendmail(EMAIL_USER, ALERT_RECIPIENT, msg.as_string())
-        print(f"Email alert sent for table {table}.")
+            server.starttls()  # Start TLS encryption
+            server.login(EMAIL_USER, EMAIL_PASS)  # Login with credentials
+            server.sendmail(EMAIL_USER, ALERT_RECIPIENTS, msg.as_string())
+        print(f"Email alert sent successfully for table: {table}")
     except Exception as e:
-        print(f"Failed to send email alert: {e}")
+        print(f"Failed to send email alert for table {table}: {e}")
+
 
 def check_and_delete_stuck_records():
     try:
