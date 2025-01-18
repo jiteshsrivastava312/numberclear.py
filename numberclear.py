@@ -17,7 +17,7 @@ SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
 EMAIL_USER = "jitesh@avissupport.com"
 EMAIL_PASS = "wlfhjfbpczhukutg"
-ALERT_RECIPIENT = "jitesh@avissupport.com"
+ALERT_RECIPIENTS = ["rohit.shrivastava@cogenteservices.com", "ankush.sharma@cogenteservices.com"]
 
 # List of table names to check
 TABLES = [
@@ -38,7 +38,7 @@ def send_email_alert(table, stuck_records):
     msg = MIMEText(body)
     msg["Subject"] = subject
     msg["From"] = EMAIL_USER
-    msg["To"] = ALERT_RECIPIENT
+     msg["To"] = ", ".join(ALERT_RECIPIENTS)
 
     try:
         with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
