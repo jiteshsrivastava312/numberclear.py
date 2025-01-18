@@ -60,9 +60,9 @@ def check_and_delete_stuck_records():
         for table in TABLES:
             # Select stuck records
             query = sql.SQL("""
-                SELECT id, updated_at 
+                SELECT processupdatedon 
                 FROM {} 
-                WHERE updated_at <= %s
+                WHERE processupdatedon <= %s
             """).format(sql.Identifier(table))
             cursor.execute(query, (stuck_time_threshold,))
             stuck_records = cursor.fetchall()
@@ -71,7 +71,7 @@ def check_and_delete_stuck_records():
                 # Delete stuck records
                 delete_query = sql.SQL("""
                     DELETE FROM {} 
-                    WHERE updated_at <= %s
+                    WHERE processupdatedon <= %s
                 """).format(sql.Identifier(table))
                 cursor.execute(delete_query, (stuck_time_threshold,))
                 connection.commit()
