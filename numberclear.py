@@ -17,7 +17,7 @@ SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
 EMAIL_USER = "jitesh@avissupport.com"
 EMAIL_PASS = "wlfhjfbpczhukutg"
-ALERT_RECIPIENTS = ["rohit.shrivastava@cogenteservices.com", "ankush.sharma@cogenteservices.in", "aditya@avissupport.com"]
+ALERT_RECIPIENTS = ["rohit.shrivastava@cogenteservices.com", "ankush.sharma@cogenteservices.in", "aditya@avissupport.com", "yogesh.kumar@cogenteservices.in"]
 
 # List of table names to check
 TABLES = [
